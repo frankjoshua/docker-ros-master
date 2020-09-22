@@ -20,3 +20,8 @@ after_success:
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
     docker push $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH;
     fi
+
+  - if [ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_CPU_ARCH" == "arm64"]; then
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+    docker push $DOCKER_CONTAINER:latest;
+    fi
