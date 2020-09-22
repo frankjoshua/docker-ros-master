@@ -6,14 +6,17 @@ arch:
   - amd64
   - arm64
 
+env:
+  - DOCKER_CONTAINER=frankjoshua/ros-master
+
 before_install:
-  - docker build -t frankjoshua/ros-master:$TRAVIS_CPU_ARCH .
+  - docker build -t $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH .
 
 script:
-  - docker images frankjoshua/ros-master:$TRAVIS_CPU_ARCH
+  - docker images $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-    docker push frankjoshua/ros-master:$TRAVIS_CPU_ARCH;
+    docker push $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH;
     fi
