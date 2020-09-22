@@ -1,0 +1,15 @@
+---
+language: python
+services: docker
+
+arch:
+  - amd64
+  - arm64
+
+# install:
+#   # Install test dependencies.
+#   - pip install docker
+
+script:
+  # Run tests.
+  - docker build -t frankjoshua/ros-master .
