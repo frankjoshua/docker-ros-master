@@ -1,4 +1,4 @@
-# ROS master in Docker ![https://hub.docker.com/r/frankjoshua/ros-master](https://img.shields.io/docker/pulls/frankjoshua/ros-master)
+# ROS master in Docker ![https://hub.docker.com/r/frankjoshua/ros-master](https://img.shields.io/docker/pulls/frankjoshua/ros-master) [![Build Status](https://travis-ci.org/frankjoshua/docker-ros-master.svg?branch=master)](https://travis-ci.org/frankjoshua/docker-ros-master)
 
 ##
 
