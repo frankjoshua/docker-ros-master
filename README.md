@@ -1,3 +1,11 @@
+# ROS master in Docker ![https://hub.docker.com/r/frankjoshua/ros-master](https://img.shields.io/docker/pulls/frankjoshua/ros-master)
+
+##
+
+Runs a ros master in a Docker container. Probably need --network="host" because ROS uses ephemeral ports.
+
+## Example
+
 ```
 docker run -it \
     --network="host" \
