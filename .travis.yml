@@ -1,7 +1,6 @@
 ---
 dist: xenial
 sudo: required
-services: docker
 
 env:
   global:
