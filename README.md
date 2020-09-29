@@ -15,3 +15,13 @@ docker run -it \
     --env="ROS_MASTER_URI=$ROS_MASTER_URI" \
     frankjoshua/ros-master
 ```
+
+## License
+
+Apache 2.0
+
+## Author Information
+
+Joshua Frank [@frankjoshua77](https://www.twitter.com/@frankjoshua77)
+<br>
+[http://roboticsascode.com](http://roboticsascode.com)
