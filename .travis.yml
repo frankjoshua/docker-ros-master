@@ -9,19 +9,6 @@ arch:
 env:
   - DOCKER_CONTAINER=frankjoshua/ros-master
 
-before_install:
-  - docker build -t $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH .
-
 script:
-  - docker images $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH
-
-after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-    docker push $DOCKER_CONTAINER:$TRAVIS_CPU_ARCH;
-    fi
-
-  - if [ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_CPU_ARCH" == "arm64"]; then
-    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-    docker push $DOCKER_CONTAINER:latest;
-    fi
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+    ./build.sh $DOCKER_CONTAINER --push;
