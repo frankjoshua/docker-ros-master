@@ -1,9 +1,11 @@
 ---
-language: python
+dist: xenial
+sudo: required
 services: docker
 
 env:
-  - DOCKER_CONTAINER=frankjoshua/ros-master
+  global:
+    - DOCKER_CONTAINER=frankjoshua/ros-master
 
 before_install:
   - echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
