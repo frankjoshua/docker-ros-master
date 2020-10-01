@@ -14,7 +14,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 # Create builder for docker
 BUILDER=$(docker buildx create --use)
 # Build container on all achitectures in parallel and push to Docker Hub
-docker buildx build -t $1 --platform linux/arm,linux/arm/v7,linux/arm64/v8,linux/amd64 . $2
+docker buildx build -t $1 --platform linux/arm/v7,linux/arm64/v8,linux/amd64 . $2
 # Clean up and return error code for CI system if needed
 ERROR_CODE=$?
 docker buildx rm $BUILDER
