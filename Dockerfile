@@ -1,3 +1,3 @@
-FROM ros:lunar-ros-base
+FROM ros:noetic-ros-base
 
 CMD ["roscore"]
