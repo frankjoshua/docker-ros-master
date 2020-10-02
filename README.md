@@ -16,6 +16,10 @@ docker run -it \
     frankjoshua/ros-master
 ```
 
+## Template
+
+This repo is a GitHub template. Just change the repo name in [.travis.yml](.travis.yml) and edit [Dockerfile](Dockerfile) and [README.md](README.md) to taste.
+
 ## License
 
 Apache 2.0

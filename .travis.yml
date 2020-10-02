@@ -1,6 +1,5 @@
 ---
 dist: xenial
-sudo: required
 
 env:
   global:
