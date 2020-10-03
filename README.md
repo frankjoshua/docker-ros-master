@@ -20,6 +20,10 @@ docker run -it \
 
 This repo is a GitHub template. Just change the repo name in [.travis.yml](.travis.yml) and edit [Dockerfile](Dockerfile) and [README.md](README.md) to taste.
 
+## Testing
+
+Travis CI expects the DOCKER_USERNAME and DOCKER_PASSWORD variables to be set in your environment.
+
 ## License
 
 Apache 2.0
