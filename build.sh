@@ -1,17 +1,19 @@
 # Check that buildx is enabled
-docker buildx version
+docker buildx version > /dev/null
 if [[ $? -ne 0 ]]; then
-echo "Docker must have experimental features enabled"
-exit 1
+    echo "Docker must have experimental features enabled"
+    exit 1
 fi
-usage() { 
-    echo "Usage: $0 -t <DOCKER_TAG> -a <ARCHITECTURE> [-p Push]" 1>&2; exit 1; 
-}
 ARCHITECTURE="linux/arm/v7,linux/arm64/v8,linux/amd64"
+usage() { 
+    echo "Usage: $0 -t <DOCKER_TAG> [-a <ARCHITECTURE>] [-p Push]"
+    echo "Default architecture: linux/arm/v7,linux/arm64/v8,linux/amd64"
+    exit 1 
+}
 while getopts ":a:t:pq" o; do
     case "${o}" in
         t)
-            TAG=${OPTARG}
+            TAG="${OPTARG}"
             ;;
         p)
             PUSH="--push"
@@ -20,7 +22,7 @@ while getopts ":a:t:pq" o; do
             QUIET="2> /dev/null"
             ;;
         a)
-            ARCHITECTURE=${OPTARG}
+            ARCHITECTURE="${OPTARG}"
             ;;
         :)  
             echo "ERROR: Option -$OPTARG requires an argument"
@@ -33,6 +35,11 @@ while getopts ":a:t:pq" o; do
     esac
 done
 shift $((OPTIND-1))
+
+if [[ "${TAG}" -eq "" ]]; then
+    usage
+    exit 1
+fi
 
 # Setup qemu for multiplatform builds
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
