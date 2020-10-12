@@ -39,12 +39,15 @@ while getopts ":a:t:pql" o; do
 done
 shift $((OPTIND-1))
 
-if [[ "${TAG}" -eq "" ]]; then
+echo "${TAG}"
+if [[ -z "${TAG}" ]]; then
+    echo "Missing Tag!"
     usage
     exit 1
 fi
 
-if [[ "${LOCAL}" -ne "" ]]; then
+if [[ -z "${LOCAL}" ]]; then
+  echo "Creating multi platform builder."
   # Create builder for docker
   BUILDER=$(docker buildx create --use)
   # Setup qemu for multiplatform builds
@@ -54,7 +57,7 @@ fi
 eval "docker buildx build $PUSH -t $TAG --platform $ARCHITECTURE . $QUIET"
 # Clean up and return error code for CI system if needed
 ERROR_CODE=$?
-if [[ "${LOCAL}" -ne "" ]]; then
+if [[ -z "${LOCAL}" ]]; then
   docker buildx rm $BUILDER
 fi
 if [[ $ERROR_CODE -ne 0 ]]; then
