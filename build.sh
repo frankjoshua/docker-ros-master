@@ -4,7 +4,7 @@ if [[ $? -ne 0 ]]; then
     echo "Docker must have experimental features enabled"
     exit 1
 fi
-ARCHITECTURE="linux/arm/v7,linux/arm64/v8,linux/amd64"
+ARCHITECTURE="--platform linux/arm/v7,linux/arm64/v8,linux/amd64"
 usage() { 
     echo "Usage: $0 -t <DOCKER_TAG> [-a <ARCHITECTURE>] [-p Push] [-l Local build]"
     echo "Default architecture: linux/arm/v7,linux/arm64/v8,linux/amd64"
@@ -22,10 +22,11 @@ while getopts ":a:t:pql" o; do
             QUIET="2> /dev/null"
             ;;
         a)
-            ARCHITECTURE="${OPTARG}"
+            ARCHITECTURE="--platform ${OPTARG}"
             ;;
         l)
             LOCAL="true"
+            ARCHITECTURE=""
             ;;
         :)  
             echo "ERROR: Option -$OPTARG requires an argument"
@@ -54,7 +55,7 @@ if [[ -z "${LOCAL}" ]]; then
   docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 fi
 # Build container on all achitectures in parallel and push to Docker Hub
-eval "docker buildx build $PUSH -t $TAG --platform $ARCHITECTURE . $QUIET"
+eval "docker buildx build $PUSH -t $TAG $ARCHITECTURE . $QUIET"
 # Clean up and return error code for CI system if needed
 ERROR_CODE=$?
 if [[ -z "${LOCAL}" ]]; then
