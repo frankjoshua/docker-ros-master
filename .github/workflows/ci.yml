@@ -26,6 +26,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push image to DockerHub
+      - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Build and push image to DockerHub
         run: ./build.sh -t $DOCKER_CONTAINER -q -p
