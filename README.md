@@ -18,7 +18,7 @@ docker run -it \
 
 ## Template
 
-This repo is a GitHub template. Just change the repo name in [.travis.yml](.travis.yml) and edit [Dockerfile](Dockerfile) and [README.md](README.md) to taste.
+This repo is a GitHub template. Just change the repo name in [.travis.yml](.travis.yml) and [.github/workflows/ci.yml](.github/workflows/ci.yml) and edit [Dockerfile](Dockerfile) and [README.md](README.md) to taste.
 
 ## Testing
 
