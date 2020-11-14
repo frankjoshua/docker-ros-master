@@ -6,6 +6,8 @@ name: CI
     branches:
       - master
 
+env:
+  DOCKER_CONTAINER: frankjoshua/ros-master
 jobs:
   lint:
     name: Lint
@@ -26,3 +28,6 @@ jobs:
         run: |
           yamllint .
           ansible-lint
+
+      - name: Build Docker Container
+        run: ./build.sh -t $DOCKER_CONTAINER -q -p
