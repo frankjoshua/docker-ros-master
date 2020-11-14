@@ -10,8 +10,8 @@ env:
   DOCKER_CONTAINER: frankjoshua/ros-master
 
 jobs:
-  lint:
-    name: Lint
+  docker:
+    name: Docker
     runs-on: ubuntu-16.04
     steps:
       - name: Set up QEMU
@@ -28,6 +28,6 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Build and push image to DockerHub
         run: ./build.sh -t $DOCKER_CONTAINER -q -p
