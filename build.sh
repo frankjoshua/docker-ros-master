@@ -4,10 +4,10 @@ if [[ $? -ne 0 ]]; then
     echo "Docker must have experimental features enabled"
     exit 1
 fi
-ARCHITECTURE="--platform linux/arm/v7,linux/arm64/v8,linux/amd64"
+ARCHITECTURE="--platform linux/arm/v7,linux/arm64,linux/amd64"
 usage() { 
     echo "Usage: $0 -t <DOCKER_TAG> [-a <ARCHITECTURE>] [-p Push] [-l Local build]"
-    echo "Default architecture: linux/arm/v7,linux/arm64/v8,linux/amd64"
+    echo "Default architecture: linux/arm/v7,linux/arm64,linux/amd64"
     exit 1 
 }
 while getopts ":a:t:pql" o; do
