@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Check that buildx is enabled
 docker buildx version > /dev/null
 if [[ $? -ne 0 ]]; then
