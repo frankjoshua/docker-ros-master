@@ -1,10 +1,13 @@
 ---
 name: CI
-'on':
+on:
   pull_request:
   push:
     branches:
       - master
+  schedule:
+    # Run once a month
+    - cron: '1 2 3 * *'
 
 env:
   DOCKER_CONTAINER: frankjoshua/ros-master
