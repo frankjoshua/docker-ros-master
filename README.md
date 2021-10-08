@@ -6,6 +6,14 @@ Runs a ros master in a Docker container. Probably need --network="host" because 
 
 This repo is mostly an example of how to build a multi architecture docker container with ROS (Robotic Operating System). Github Actions is used to build 3 docker containers using `docker buildx` amd64 (x86 Desktop PC), arm64 (Jetson Nano) and arm32 (Raspberry Pi). This is for the purpose of developing locally on a work pc or laptop. Then being able to transfer your work to an embedded device with a high level of confidence of success.
 
+### Prerequisites
+
+You should already have Docker and VSCode with the remote containers plugin installed on your system.
+
+* [docker](https://docs.docker.com/engine/install/)
+* [vscode](https://code.visualstudio.com/)
+* [vscode remote containers plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
 ## Example
 
 ```
