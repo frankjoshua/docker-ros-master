@@ -3,7 +3,7 @@
     "context": "../",
     "dockerFile": "../Dockerfile",
     // This could launch the container as a non-root user
-    "remoteUser" : "root",
+    "remoteUser" : "ros",
     "runArgs": [
         // This will allow you to use a ptrace-based debugger like C++, Go, and Rust.
         "--cap-add=SYS_PTRACE",
